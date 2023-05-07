@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}update project{% endblock %}
+
+{% block body %}
+    <h1>modifier produit</h1>
+
+    {{ form_start(projectForm) }}
+        {{ form_row(projectForm.title) }}
+        
+        {{ form_row(projectForm.description) }} 
+        {{ form_row(projectForm.numberTasks) }}
+         {{ form_row(projectForm.url) }}
+        {{ form_row(projectForm.status) }}
+
+         {% if project.filname %}
+        <img src="{{asset('images/' ~ project.filname) }}" style="max-width: 15rem;">
+        {{ form_row(projectForm.image) }}
+        {% endif %}
+        <button type="submit" class="btn">modifer</button>
+    {{ form_end(projectForm) }}
+{% endblock %}

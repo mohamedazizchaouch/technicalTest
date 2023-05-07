@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello user!{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/serach.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+
+
+
+
+
+
+
+
+
+    <div class="container">
+<h1> liste des projects</h1>
+  
+ <form action="{{ path('app_admin') }}" method="get">
+   <div class="row">
+  
+    <div class="col-4">
+    <input type="text" name="search_by_name" id="s-name" placeholder="Search by name">
+    </div>
+    <div class="col-3">
+     <select  id ="s-status" name ="search_by_status">
+     <option value="">select onet</option>
+     {% for choice in choices %}
+     <option value="{{choice}}">{{choice}}</option>
+     {% endfor  %}
+     </select>
+    </div>
+    <div class="col-3">
+     <input type="text" id="s-url" name="search_by_url"  placeholder="Search...">
+    </div>
+    <div  class="col-2">
+    <button   id="button-serach" type="submit">Search</button>
+    </div>
+     
+    </div>
+    </form>
+    <div class="example-wrapper">
+    {% for notice in app.flashes('notice') %}
+    <div class="alert alert-dismissible alert-warning">
+  <h4 class="alert-heading">Warning!</h4>
+  <p class="mb-0"> {{ notice }}.</p>
+</div>
+   
+  {% endfor %}
+  <div class="row" align="center">
+   {% for project in projects %}
+   
+   <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+  <div class="card-header"> {{project.title}} `| {{project.numberTasks}} tasks</div>
+  <div class="card-body">
+    <h6 class="card-title">{{project.description}}</h4>
+    <p class="card-text">
+    <img src="{{ asset('images/' ~ project.filname) }}" style="max-width: 15rem;" >
+   </p>
+  </div>
+    </div>
+   
+   {% endfor  %}
+  </div>
+</div>
+   </div>
+ 
+
+<script>
+
+
+
+</script>
+
+
+{% endblock %}

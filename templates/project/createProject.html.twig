@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <h1>Register</h1>
+
+    {{ form_start(projectForm) }}
+        {{ form_row(projectForm.title) }}
+         {{ form_row(projectForm.image) }}
+        {{ form_row(projectForm.description) }} 
+        {{ form_row(projectForm.numberTasks) }}
+        {{ form_row(projectForm.url) }}
+        {{ form_row(projectForm.status) }}
+        <button type="submit" class="btn">create</button>
+    {{ form_end(projectForm) }}
+{% endblock %}
